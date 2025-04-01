@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #todo-container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #f4f4f4;
+            margin: 5px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo-container">
+        <h2>CRUD To-Do List</h2>
+        <input type="text" id="task" placeholder="Add a new task">
+        <button onclick="addTask()">Add</button>
+        <ul id="task-list"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let taskInput = document.getElementById("task");
+            let taskValue = taskInput.value;
+            if (taskValue === "") return;
+
+            let li = document.createElement("li");
+            let span = document.createElement("span");
+            span.textContent = taskValue;
+
+            let editButton = document.createElement("button");
+            editButton.textContent = "Edit";
+            editButton.onclick = function() {
+                let newValue = prompt("Edit task", span.textContent);
+                if (newValue) span.textContent = newValue;
+            };
+
+            let deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function() { li.remove(); };
+
+            li.appendChild(span);
+            li.appendChild(editButton);
+            li.appendChild(deleteButton);
+            document.getElementById("task-list").appendChild(li);
+            taskInput.value = "";
+        }
+    </script>
+</body>
+</html>

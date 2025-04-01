@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "E:/Tailwindcss"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Projects",
+		"liveServer.settings.port": 5501
+	}
+}
